@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Función de ayuda
+show_help() {
+    echo -e "\t\e[00;101m\e[33m       >>> ERROR LINK NO RECONOCIDO <<<          \e[00m"
+    echo -e "\e[34mUso: dlp2 [enlace_del_video]\e[0m"
+    echo -e "\e[33mDescarga un vídeo desde un enlace y lo mueve al almacenamiento interno.\e[0m"
+    echo ""
+    echo -e "\e[32mEjemplo:\e[0m"
+    echo -e "\e[32mdlp2\e[0m \e[33mhttps://example.com/video\e[0m"
+}
+
+# Si no se proporciona ningún argumento, mostrar la ayuda
+if [ -z "$1" ]; then
+    show_help
+    exit 0
+fi
+
+# Descargar el video usando yt-dlp y almacenarlo en una variable
+video=$(yt-dlp -f mp4 "$1")
+
+# Mover el video a la ruta /sdcard/
+mv "$video" /sdcard/
+
+# Mostrar un mensaje con echo de color amarillo con fondo gris
+echo -e "\e[43;30mVídeo movido a tu almacenamiento Interno\e[0m"

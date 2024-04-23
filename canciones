@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Definir la versión del script
+VERSION="1.0"
+
+# Definir las variables por defecto
+format="mp3"
+
+# Función para mostrar la ayuda
+show_help() {
+    echo "Uso: $0 [-a|-o|-m|-w|-mp3|--help|-h|-v|--version] <enlace_de_la_lista_de_reproducción>"
+    echo "Opciones:"
+    echo "  -a: Descargar en formato AAC"
+    echo "  -o: Descargar en formato OGG"
+    echo "  -m: Descargar en formato M4A"
+    echo "  -w: Descargar en formato WAV"
+    echo "  -mp3: Descargar en formato MP3 (por defecto)"
+    echo "  --help, -h: Mostrar este menú de ayuda"
+    echo "  -v: Mostrar la versión del script"
+    echo "  --version: Mostrar la versión del script"
+    exit 1
+}
+
+# Procesar las opciones
+while getopts ":aomwhv" opt; do
+    case $opt in
+        a)
+            format="aac"
+            ;;
+        o)
+            format="ogg"
+            ;;
+        m)
+            format="m4a"
+            ;;
+        w)
+            format="wav"
+            ;;
+        mp3)
+            format="mp3"
+            ;;
+        h|--help)
+            show_help
+            ;;
+        v)
+            echo "Versión: $VERSION"
+            exit 0
+            ;;
+        \?)
+            echo "Opción inválida: -$OPTARG" >&2
+            show_help
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+# Verificar si Python está instalado
+if ! command -v python &> /dev/null; then
+    echo "Python no está instalado. Instalando..."
+    pkg install python -y
+fi
+
+# Verificar si yt-dlp está instalado
+if ! command -v yt-dlp &> /dev/null; then
+    echo "yt-dlp no está instalado. Instalando..."
+    pip install yt-dlp
+fi
+
+# Almacenar el enlace de la lista de reproducción en la variable $1
+playlist_link="$1"
+
+# Descargar la lista de reproducción completa usando yt-dlp en el formato especificado
+yt-dlp -x --audio-format "$format" -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$playlist_link"

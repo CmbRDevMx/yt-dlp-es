@@ -1,0 +1,47 @@
+#!/bin/bash
+
+yes|pkg update && yes|pkg upgrade
+# Verificar si Git está instalado
+if ! command -v git &> /dev/null; then
+    echo "Git no está instalado. Instalando..."
+    pkg install git -y
+fi
+
+# Verificar si Python está instalado
+if ! command -v python &> /dev/null; then
+    echo "Python no está instalado. Instalando..."
+    pkg install python -y
+fi
+
+# Verificar si yt-dlp está instalado
+if ! command -v yt-dlp &> /dev/null; then
+    echo "yt-dlp no está instalado. Instalando..."
+    pip install yt-dlp
+fi
+
+# Verificar si la carpeta "storage" existe en el directorio $HOME
+if [ ! -d "$HOME/storage" ]; then
+    echo "Error: Debes dar permisos de almacenamiento para continuar.\nEjecute el comando:\ntermux-setup-storage"
+else
+    echo "Todos los requisitos están instalados y la carpeta 'storage' está presente."
+    echo ""
+    echo -e "${C}clonando repositorio${NC}"
+    sleep 1.5
+    git clone https://github.com/CmbRDevMx/yt-dlp-es.git
+    
+    echo -e "${C}instalando  binarios${NC}"
+    sleep 1
+    
+    chmod +x ~/yt-dlp-es/video
+    chmod +x ~/yt-dlp-es/canciones
+    
+    ln -sf ~/yt-dlp-es/canciones $PREFIX/bin/canciones
+    ln -sf ~/yt-dlp-es/video $PREFIX/bin/video
+
+    rm ~/ytube
+    echo -e "${C}puedes usar las nuevas herramientas${NC}"
+    echo ""
+    echo -e "${C}comando: musica -h${NC}"
+    echo ""
+    echo -e "${C}comando: video <Link_del_video> -h${NC}"
+fi
