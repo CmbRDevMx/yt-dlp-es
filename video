@@ -3,11 +3,11 @@
 # Función de ayuda
 show_help() {
     echo -e "\t\e[00;101m\e[33m       >>> ERROR LINK NO RECONOCIDO <<<          \e[00m"
-    echo -e "\e[34mUso: dlp2 [enlace_del_video]\e[0m"
+    echo -e "\e[34mUso: video [enlace_del_video]\e[0m"
     echo -e "\e[33mDescarga un vídeo desde un enlace y lo mueve al almacenamiento interno.\e[0m"
     echo ""
     echo -e "\e[32mEjemplo:\e[0m"
-    echo -e "\e[32mdlp2\e[0m \e[33mhttps://example.com/video\e[0m"
+    echo -e "\e[32mvideo\e[0m \e[33mhttps://example.com/video\e[0m"
 }
 
 # Si no se proporciona ningún argumento, mostrar la ayuda

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+R='\033[0;31m'
+V='\033[0;32m'
+B='\033[0;34m'
+A='\033[0;33m'
+C='\033[0;36m'
+NC='\033[0m'
+
 # Definir la versión del script
 VERSION="1.0"
 
@@ -15,6 +22,8 @@ show_help() {
     echo "  -m: Descargar en formato M4A"
     echo "  -w: Descargar en formato WAV"
     echo "  -mp3: Descargar en formato MP3 (por defecto)"
+    echo ""
+    echo "  Ejemolo: canciones -o <link_del_video>"
     echo "  --help, -h: Mostrar este menú de ayuda"
     echo "  -v: Mostrar la versión del script"
     echo "  --version: Mostrar la versión del script"

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+R='\033[0;31m'
+V='\033[0;32m'
+B='\033[0;34m'
+A='\033[0;33m'
+C='\033[0;36m'
+NC='\033[0m'
+
 yes|pkg update && yes|pkg upgrade
 # Verificar si Git está instalado
 if ! command -v git &> /dev/null; then
@@ -43,5 +50,5 @@ else
     echo ""
     echo -e "${C}comando: musica -h${NC}"
     echo ""
-    echo -e "${C}comando: video <Link_del_video> -h${NC}"
+    echo -e "${C}comando: video <Link_del_video> ${NC}"
 fi

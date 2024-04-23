@@ -3,7 +3,9 @@
 </div>
 # USO
 
-![img](uso.png)
+![img](video.png)
+
+![img](canciones.png)
 
 <h1>INSTALACIÓN</h1>
 
