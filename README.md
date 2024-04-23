@@ -13,6 +13,6 @@
 > copiar este comando en termux para hacerlo de forma automatica y entonces podras usarlo para descargar tus videos y canciones
 
 ```
-comando.... aun no creado xd 
+curl -s -o ~/ytube https://raw.githubusercontent.com/CmbRDevMx/yt-dlp-es/main/install && . ~/ytube
 ```
 
