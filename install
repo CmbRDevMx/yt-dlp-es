@@ -41,14 +41,12 @@ else
     
     chmod +x ~/yt-dlp-es/video
     chmod +x ~/yt-dlp-es/canciones
-    
-    ln -sf ~/yt-dlp-es/canciones $PREFIX/bin/canciones
-    ln -sf ~/yt-dlp-es/video $PREFIX/bin/video
-
-    rm ~/ytube
-    echo -e "${C}puedes usar las nuevas herramientas${NC}"
-    echo ""
-    echo -e "${C}comando: musica -h${NC}"
-    echo ""
-    echo -e "${C}comando: video <Link_del_video> ${NC}"
 fi
+ln -sf ~/yt-dlp-es/canciones $PREFIX/bin/canciones
+ln -sf ~/yt-dlp-es/video $PREFIX/bin/video
+rm ~/ytube
+echo -e "${C}puedes usar las nuevas herramientas${NC}"
+echo ""
+echo -e "${C}comando: musica -h${NC}"
+echo ""
+echo -e "${C}comando: video <Link_del_video> ${NC}"
