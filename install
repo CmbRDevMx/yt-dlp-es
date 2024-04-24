@@ -44,9 +44,9 @@ else
 fi
 ln -sf ~/yt-dlp-es/canciones $PREFIX/bin/canciones
 ln -sf ~/yt-dlp-es/video $PREFIX/bin/video
-rm ~/ytube
+rm ~/install
 echo -e "${C}puedes usar las nuevas herramientas${NC}"
 echo ""
-echo -e "${C}comando: musica -h${NC}"
+echo -e "${C}comando: canciones -h${NC}"
 echo ""
 echo -e "${C}comando: video <Link_del_video> ${NC}"
